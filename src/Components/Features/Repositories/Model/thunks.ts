@@ -1,9 +1,13 @@
-import { RepositoriesAPI } from '../../../API/api'
-import { RepositoriesActions } from '.'
+import { ThunkAction } from 'redux-thunk'
+import { RepositoriesAPI } from '../../../API/index'
+import { AppStateType } from '../../../store/store'
+import { Actions, ActionsType } from './actions'
 
-export const getRepositories = () => {
-    return async (dispatch: any) => {
+type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsType>
+
+export const getRepositories = (): ThunkType => {
+    return async (dispatch) => {
         const data = await RepositoriesAPI.getRepositories()
-        dispatch(RepositoriesActions.getRepositories(data))
+        dispatch(Actions.getRepositories(data.items))
     }
-}
+} 

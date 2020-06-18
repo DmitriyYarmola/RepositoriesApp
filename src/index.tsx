@@ -1,13 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { App } from './App'
+import { Provider } from 'react-redux'
 import * as serviceWorker from './serviceWorker'
+import { store } from './Components/store/store'
+import { App } from './App'
 import './global.sass'
 
 ReactDOM.render(
-    <React.StrictMode>
+    <Provider store={store}>
         <App />
-    </React.StrictMode>,
+    </Provider>,
     document.querySelector('#root')
 )
 
