@@ -1,15 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker'
-import { store } from './Components/store/store'
+import { store } from './Components/lib/store/store'
 import { App } from './App'
 import './global.sass'
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
+    <BrowserRouter>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </BrowserRouter>,
     document.querySelector('#root')
 )
 

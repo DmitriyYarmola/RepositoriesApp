@@ -97,9 +97,11 @@ export interface RepositoryType {
     }
     forks: number
     open_issues: number
-    watchers: number
     default_branch: string
     score: number
+    url: string
+    watchers: number
+    html_url: string
 }
 
 interface DataResponseType {
@@ -107,12 +109,90 @@ interface DataResponseType {
     total_count: number
     incomplete_results: boolean
 }
+
+export enum ResponseCode {
+    OK = 200,
+    NoFound = 404,
+}
+
+
+export interface ContributeType {
+    avatar_url: string
+    contributions: number
+    events_url: string
+    followers_url: string
+    following_url: string
+    gists_url: string
+    gravatar_id: string
+    html_url: string
+    id: number
+    login: string
+    node_id: string
+    organizations_url: string
+    received_events_url: string
+    repos_url: string
+    site_admin: boolean
+    starred_url: string
+    subscriptions_url: string
+    type: string
+    url: string
+}
+
+
+const instance = axios.create({
+    baseURL: 'https://api.github.com',
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+    },
+})
 export const RepositoriesAPI = {
     getRepositories: async () => {
-        const response = await axios.get<DataResponseType>(
-            'https://api.github.com/search/repositories?q=stars&sort=stars&order=desc&page=1'
-        )
-        const data = await response.data
-        return data
+        try {
+            const response = await instance.get<DataResponseType>('search/repositories', {
+                params: {
+                    q: 'stars',
+                    sort: 'stars',
+                    order: 'desc',
+                    page: 1,
+                    per_page: 10,
+                },
+            })
+            console.log(response)
+            return response
+        } catch (error) {
+            return error
+        }
+    },
+    searchRepositories: async (name: string, pageNumber: number) => {
+        try {
+            const response = await instance.get<DataResponseType>(
+                `search/repositories?q=${name}+in:name`,
+                {
+                    params: {
+                        sort: 'stars',
+                        page: pageNumber,
+                        per_page: 10,
+                    },
+                }
+            )
+            return response
+        } catch (error) {
+            return error
+        }
+    },
+    getContributorsOfRepository: async (fullNameOfRepository: string) => {
+        try {
+            const response = await instance.get(
+                `repos/${fullNameOfRepository}/contributors`,
+                {
+                    params: {
+                        per_page: 10,
+                    },
+                }
+            )
+            return response
+        } catch (error) {
+            return error
+        }
     },
 }
