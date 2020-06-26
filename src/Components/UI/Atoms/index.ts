@@ -1,8 +1,12 @@
 export { Input } from './Input'
-export { RepositoriesHeader } from './RepositoriesHeader'
+export { Criterions } from './Criterions'
 export { BlockWrapped } from './BlockWrapped'
-export { RepositoryInfoRow } from './RepositoryInfoRow'
-export { RepositoryDescription } from './RepositoryDescription'
-export { OwnerInfoRow } from './OwnerInfoRow'
-export { ListActiveContributes } from './ListActiveContributes'
-export { ListUsedLanguage } from './ListUsedLanguage'
+export {
+    Info,
+    Description,
+    OwnerInfo,
+    Contributors,
+    UsedLanguage,
+} from './RepositoryInfo'
+export { CardTitle } from './CardTitle'
+export { Link } from './Link'

@@ -16,7 +16,7 @@ export const getRepositories = (): ThunkType => {
     return async (dispatch) => {
         const response = await RepositoriesAPI.getRepositories()
         if (response.status === ResponseCode.OK)
-            dispatch(Actions.getRepositories(response.data.items))
+            dispatch(Actions.setRepositories(response.data.items))
         else
             dispatch(
                 ErrorsActions.setError({
@@ -32,8 +32,8 @@ export const searchRepository = (name: string, numberPage: number): ThunkType =>
         const response = await RepositoriesAPI.searchRepositories(name, numberPage)
 
         if (response.status === ResponseCode.OK) {
-            dispatch(Actions.getRepositoriesThroughSearch(response.data.items))
-            dispatch(Actions.getTotalCountOfRepositories(response.data.total_count))
+            dispatch(Actions.setRepositories(response.data.items))
+            dispatch(Actions.setTotalCountOfRepositories(response.data.total_count))
         } else
             dispatch(
                 ErrorsActions.setError({
@@ -49,7 +49,7 @@ export const getContributesRepository = (fullName: string): ThunkType => {
         const response = await RepositoriesAPI.getContributorsOfRepository(fullName)
         console.log(response)
         if (response.status === ResponseCode.OK) {
-            dispatch(Actions.getContributesOfActiveRepository(response.data))
+            dispatch(Actions.setContributesOfActiveRepository(response.data))
         } else
             dispatch(
                 ErrorsActions.setError({

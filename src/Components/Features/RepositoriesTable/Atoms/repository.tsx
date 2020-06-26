@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { RepositoriesActions, RepositoriesThunks } from '../Model'
+import { Link } from '../../../UI/Atoms'
 
 const RepositoryItem = styled.div`
     display: grid;
@@ -18,8 +19,10 @@ const RepositoryItem = styled.div`
     border-left: 1px solid black;
     border: 1px solid black;
 `
+
 const Name = styled.div`
     cursor: pointer;
+    text-transform: none;
 `
 const CountStars = styled.span`
     border-right: 1px solid black;
@@ -28,11 +31,10 @@ const CountStars = styled.span`
 const DateLastCommit = styled.span`
     border-right: 1px solid black;
 `
-const Link = ({ ...props }): React.ReactElement => <a {...props}>Link</a>
-
 const LinkOnGithub = styled(Link)`
-    text-decoration: none;
     text-transform: none;
+    text-decoration: none;
+    margin-left: 10px;
     color: inherit;
 `
 
@@ -61,12 +63,25 @@ export const Repository: React.FC<RepositoriesPropsType> = ({
 
     return (
         <RepositoryItem>
-            <Name onClick={onGetInfoOfRepository}>
-                <NavLink to={'/repos/' + repoID}>{name}</NavLink>
+            <Name>
+                <NavLink
+                    onClick={onGetInfoOfRepository}
+                    to={'/' + repoID}
+                    style={{
+                        textTransform: 'none',
+                        textDecoration: 'none',
+                        color: 'black',
+                    }}
+                >
+                    {name}
+                </NavLink>
             </Name>
             <CountStars>{countOfStars}</CountStars>
             <DateLastCommit>{dateLastCommit}</DateLastCommit>
-            <LinkOnGithub href={linkOnGithub} target="_blank" />
+            <LinkOnGithub href={linkOnGithub} target="_blank">
+                {' '}
+                Link
+            </LinkOnGithub>
         </RepositoryItem>
     )
 }

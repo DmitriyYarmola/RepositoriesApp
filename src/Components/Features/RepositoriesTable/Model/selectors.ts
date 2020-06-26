@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect'
 import { AppStateType } from '../../../lib/store'
-import { RepositoryType } from '../../../API/api'
+import { RepositoryType, UserType } from '../../../API/api'
 
 export const repositories = (state: AppStateType): RepositoryType[] | null =>
     state.RepositoriesReducer.repositories
@@ -8,9 +8,9 @@ export const repositories = (state: AppStateType): RepositoryType[] | null =>
 export const totalCount = (state: AppStateType): number =>
     state.RepositoriesReducer.totalCount
 
-export const contributors = (state: AppStateType): any =>
+export const contributors = (state: AppStateType): UserType[] | null =>
     state.RepositoriesReducer.contributorsOfActiveRepository
-    
+
 export const activeRepositoryId = (state: AppStateType): number | null =>
     state.RepositoriesReducer.activeRepositoryId
 

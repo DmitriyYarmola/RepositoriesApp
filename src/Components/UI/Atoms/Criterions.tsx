@@ -28,7 +28,7 @@ const DateLastCommit = styled.div`
 `
 
 const LinkGitHub = styled.div``
-export const RepositoriesHeader = () => {
+export const Criterions = () => {
     return (
         <Header>
             <Name>

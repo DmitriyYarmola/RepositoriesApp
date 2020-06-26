@@ -1,2 +1,2 @@
 export { Paginator } from './paginator'
-export { PaginatorReducer } from './Model'
+export { PaginatorReducer, PaginatorActions, PaginatorSelectors } from './Model'

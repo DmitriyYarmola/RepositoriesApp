@@ -1,46 +1,53 @@
 import React from 'react'
 import styled from 'styled-components'
 import {
-    RepositoryInfoRow,
-    OwnerInfoRow,
-    ListUsedLanguage,
-    RepositoryDescription,
-    ListActiveContributes,
+    Info,
+    OwnerInfo,
+    UsedLanguage,
+    Description,
+    Contributors,
+    CardTitle,
 } from '../../Atoms'
+import { UserType } from '../../../API'
 
-const Card = styled.div``
-
+const Card = styled.div`
+    background: #f2f3f4;
+    padding: 15px;
+`
 interface RepositoryCardPropsType {
     repoName: string
     countStars: number
-    dateLastCommit: number
+    dateLastCommit: string
     avatar: string
     nickName: string
-    listLanguage: any
+    language: null | string | string[]
     description: string
-    activeContributes: any
+    activeContributes: UserType[]
+    link: string
 }
 export const RepositoryCard: React.FC<RepositoryCardPropsType> = ({
     repoName,
     countStars,
     dateLastCommit,
-    avatar,
     nickName,
-    listLanguage,
+    avatar,
+    language,
     description,
     activeContributes,
+    link,
 }) => {
     return (
         <Card>
-            <RepositoryInfoRow
+            <CardTitle title="Repository Info" />
+            <OwnerInfo avatar={avatar} nickName={nickName} link={link} />
+            <Info
                 repoName={repoName}
                 countStars={countStars}
                 dateLastCommit={dateLastCommit}
             />
-            <OwnerInfoRow avatar={avatar} nickName={nickName} />
-            <ListUsedLanguage listLanguage={listLanguage} />
-            <RepositoryDescription description={description} />
-            <ListActiveContributes activeContibutes={activeContributes} />
+            <UsedLanguage language={language} />
+            <Description description={description} />
+            <Contributors activeContibutes={activeContributes} />
         </Card>
     )
 }

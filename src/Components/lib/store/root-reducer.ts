@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { RepositoriesReducer } from '../../Features/Repositories'
+import { RepositoriesReducer } from '../../Features/RepositoriesTable'
 import { PaginatorReducer } from '../../Features/Paginator'
 import { ErrorsReducer } from '../../Features/Errors'
 

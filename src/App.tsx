@@ -1,12 +1,11 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
-import { Main } from './Components/Pages/Main/page'
+import { MainPage } from './Components/Pages/Main'
 import { ErrorsSelectors } from './Components/Features/Errors/Model'
 import { Error } from './Components/Features/Errors'
-import { Preloader } from './Components/UI/Molecules/Preloader/Preloader'
-import { Card } from './Components/Pages/Card'
+import { CardPage } from './Components/Pages/Card'
 
 const Wrapper = styled.div`
     width: 100%;
@@ -20,16 +19,10 @@ export const App = (): React.ReactElement => {
     return (
         <Wrapper>
             {error && <Error />}
-            <Suspense fallback={<Preloader />}>
-                <Switch>
-                    <Route path="/repos" exact>
-                        <Main />
-                    </Route>
-                    <Route path="/repos/:repoID?">
-                        <Card />
-                    </Route>
-                </Switch>
-            </Suspense>
+            <Switch>
+                <Route path="/" exact component={() => <MainPage />} />
+                <Route path="/:repoID?" component={() => <CardPage />} />
+            </Switch>
         </Wrapper>
     )
 }
