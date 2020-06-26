@@ -10,3 +10,4 @@ export {
 } from './RepositoryInfo'
 export { CardTitle } from './CardTitle'
 export { Link } from './Link'
+export { Button } from './Button'

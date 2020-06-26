@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect'
 import { AppStateType } from '../../../lib/store'
-import { RepositoryType, UserType } from '../../../API/api'
+import { RepositoryType, UserType } from '../../../API'
 
 export const repositories = (state: AppStateType): RepositoryType[] | null =>
     state.RepositoriesReducer.repositories

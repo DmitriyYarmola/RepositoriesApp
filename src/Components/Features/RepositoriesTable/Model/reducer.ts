@@ -1,5 +1,4 @@
-import { RepositoryType } from '../../../API'
-import { UserType } from '../../../API/api'
+import { RepositoryType, UserType } from '../../../API'
 import * as types from './types'
 import { ActionsType } from './actions'
 

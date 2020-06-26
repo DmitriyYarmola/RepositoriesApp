@@ -1,20 +1,21 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import './style.sass'
+import { Button } from '../../UI/Atoms'
 
-const Button = styled.button``
 const PageNumber = styled.span`
     color: black;
-    border: 1px solid black;
-    border-radius: 50%;
-    margin: 2px;
-    padding: 0px 6px;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    border: 1px solid #ddd;
     cursor: pointer;
-    &:hover {
+    &:hover:not(.selectedPage) {
         background: #f2f2f2;
     }
 `
 const NumberList = styled.div`
+    display: inline-block;
     margin-top: 10px;
 `
 
@@ -49,22 +50,23 @@ export const Paginator: React.FC<PropsType> = ({
     return (
         <NumberList>
             {portionNumber > 1 && (
-                <Button
-                    onClick={() => {
-                        setPortionNumber(portionNumber - 1)
-                    }}
-                >
-                    Prev
-                </Button>
-            )}
-            {portionNumber > 1 && (
-                <Button
-                    onClick={() => {
-                        setPortionNumber(1)
-                    }}
-                >
-                    Boost
-                </Button>
+                <>
+                    <Button
+                        onClick={() => {
+                            setPortionNumber(1)
+                        }}
+                    >
+                        ««
+                    </Button>
+                    <Button
+                        onClick={() => {
+                            setPortionNumber(1)
+                            setPortionNumber(portionNumber - 1)
+                        }}
+                    >
+                        «
+                    </Button>
+                </>
             )}
             {pages
                 .filter((p) => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
@@ -82,22 +84,22 @@ export const Paginator: React.FC<PropsType> = ({
                     )
                 })}
             {portionNumber < portionCount && (
-                <Button
-                    onClick={() => {
-                        setPortionNumber(portionNumber + 1)
-                    }}
-                >
-                    Next
-                </Button>
-            )}
-            {portionNumber < portionCount && (
-                <Button
-                    onClick={() => {
-                        setPortionNumber(portionCount)
-                    }}
-                >
-                    Boost
-                </Button>
+                <>
+                    <Button
+                        onClick={() => {
+                            setPortionNumber(portionNumber + 1)
+                        }}
+                    >
+                        »
+                    </Button>
+                    <Button
+                        onClick={() => {
+                            setPortionNumber(portionCount)
+                        }}
+                    >
+                        »»
+                    </Button>
+                </>
             )}
             {}
         </NumberList>

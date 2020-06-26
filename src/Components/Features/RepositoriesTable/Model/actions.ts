@@ -1,6 +1,6 @@
 import { InferActionsType } from '../../../lib/store'
-import { RepositoryType } from '../../../API'
-import { UserType } from '../../../API/api'
+import { RepositoryType, UserType } from '../../../API'
+
 import * as types from './types'
 
 export const Actions = {
