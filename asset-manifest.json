@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/EnemyDeaD/RepositoriesApp/settings/static/css/main.e15175ca.chunk.css",
-    "main.js": "/EnemyDeaD/RepositoriesApp/settings/static/js/main.2242c65d.chunk.js",
-    "main.js.map": "/EnemyDeaD/RepositoriesApp/settings/static/js/main.2242c65d.chunk.js.map",
-    "runtime-main.js": "/EnemyDeaD/RepositoriesApp/settings/static/js/runtime-main.8979f843.js",
-    "runtime-main.js.map": "/EnemyDeaD/RepositoriesApp/settings/static/js/runtime-main.8979f843.js.map",
-    "static/js/2.e5a8b3ff.chunk.js": "/EnemyDeaD/RepositoriesApp/settings/static/js/2.e5a8b3ff.chunk.js",
-    "static/js/2.e5a8b3ff.chunk.js.map": "/EnemyDeaD/RepositoriesApp/settings/static/js/2.e5a8b3ff.chunk.js.map",
-    "index.html": "/EnemyDeaD/RepositoriesApp/settings/index.html",
-    "precache-manifest.2d7a56cd7c41e29fea33da61959241bd.js": "/EnemyDeaD/RepositoriesApp/settings/precache-manifest.2d7a56cd7c41e29fea33da61959241bd.js",
-    "service-worker.js": "/EnemyDeaD/RepositoriesApp/settings/service-worker.js",
-    "static/css/main.e15175ca.chunk.css.map": "/EnemyDeaD/RepositoriesApp/settings/static/css/main.e15175ca.chunk.css.map",
-    "static/js/2.e5a8b3ff.chunk.js.LICENSE.txt": "/EnemyDeaD/RepositoriesApp/settings/static/js/2.e5a8b3ff.chunk.js.LICENSE.txt",
-    "static/media/error.svg": "/EnemyDeaD/RepositoriesApp/settings/static/media/error.6d1bac02.svg",
-    "static/media/user.svg": "/EnemyDeaD/RepositoriesApp/settings/static/media/user.051edb19.svg"
+    "main.css": "/RepositoriesApp/static/css/main.e15175ca.chunk.css",
+    "main.js": "/RepositoriesApp/static/js/main.d02c7832.chunk.js",
+    "main.js.map": "/RepositoriesApp/static/js/main.d02c7832.chunk.js.map",
+    "runtime-main.js": "/RepositoriesApp/static/js/runtime-main.091f2200.js",
+    "runtime-main.js.map": "/RepositoriesApp/static/js/runtime-main.091f2200.js.map",
+    "static/js/2.ebf4dcb5.chunk.js": "/RepositoriesApp/static/js/2.ebf4dcb5.chunk.js",
+    "static/js/2.ebf4dcb5.chunk.js.map": "/RepositoriesApp/static/js/2.ebf4dcb5.chunk.js.map",
+    "index.html": "/RepositoriesApp/index.html",
+    "precache-manifest.9a9cfc03f71dbfbdc33ca75c65ddcdb1.js": "/RepositoriesApp/precache-manifest.9a9cfc03f71dbfbdc33ca75c65ddcdb1.js",
+    "service-worker.js": "/RepositoriesApp/service-worker.js",
+    "static/css/main.e15175ca.chunk.css.map": "/RepositoriesApp/static/css/main.e15175ca.chunk.css.map",
+    "static/js/2.ebf4dcb5.chunk.js.LICENSE.txt": "/RepositoriesApp/static/js/2.ebf4dcb5.chunk.js.LICENSE.txt",
+    "static/media/error.svg": "/RepositoriesApp/static/media/error.6d1bac02.svg",
+    "static/media/user.svg": "/RepositoriesApp/static/media/user.051edb19.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.8979f843.js",
-    "static/js/2.e5a8b3ff.chunk.js",
+    "static/js/runtime-main.091f2200.js",
+    "static/js/2.ebf4dcb5.chunk.js",
     "static/css/main.e15175ca.chunk.css",
-    "static/js/main.2242c65d.chunk.js"
+    "static/js/main.d02c7832.chunk.js"
   ]
 }
