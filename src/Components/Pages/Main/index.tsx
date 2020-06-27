@@ -20,20 +20,38 @@ export const MainPage = (): React.ReactElement => {
     const portionSize = useSelector(PaginatorSelectors.portionSize)
 
     useEffect(() => {
-        dispatch(RepositoriesThunks.getRepositories())
-    }, [dispatch])
+        if (currentPage !== 1)
+            localStorage.setItem('currentPage', JSON.stringify(currentPage))
+    }, [currentPage])
 
     useEffect(() => {
-        localStorage.setItem('repositories', JSON.stringify(repositories))
-    }, [repositories])
-
+        const getCurrentPage = localStorage.getItem('currentPage')
+        if (getCurrentPage) {
+            dispatch(PaginatorActions.setCurrentPage(JSON.parse(getCurrentPage) || 1))
+            const getValueInput = localStorage.getItem('valueInput')
+            if (getValueInput) {
+                dispatch(
+                    RepositoriesThunks.searchRepository(
+                        getValueInput,
+                        JSON.parse(getCurrentPage)
+                    )
+                )
+                setValue(getValueInput)
+            } else {
+                dispatch(RepositoriesThunks.getRepositories())
+            }
+        }
+    }, [dispatch])
     const onSearchRepository = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.currentTarget.value)
     }, [])
 
     const onSendNameOfRepository = useCallback(
         (e: React.KeyboardEvent): void => {
-            if (e.key === 'Enter') dispatch(RepositoriesThunks.searchRepository(value, 1))
+            if (e.key === 'Enter') {
+                dispatch(RepositoriesThunks.searchRepository(value, 1))
+                localStorage.setItem('valueInput', value)
+            }
         },
         [dispatch, value]
     )
