@@ -4,7 +4,7 @@ import { ActionsType } from './actions'
 
 const initialState = {
     repositories: null as RepositoryType[] | null,
-    totalCount: null as number | null,
+    totalCount: 10,
     contributorsOfActiveRepository: null as UserType[] | null,
     activeRepositoryId: null as number | null,
 }

@@ -20,14 +20,12 @@ export const MainPage = (): React.ReactElement => {
     const portionSize = useSelector(PaginatorSelectors.portionSize)
 
     useEffect(() => {
-        if (currentPage !== 1)
-            localStorage.setItem('currentPage', JSON.stringify(currentPage))
+        if (currentPage) localStorage.setItem('currentPage', JSON.stringify(currentPage))
     }, [currentPage])
-
     useEffect(() => {
         const getCurrentPage = localStorage.getItem('currentPage')
         if (getCurrentPage) {
-            dispatch(PaginatorActions.setCurrentPage(JSON.parse(getCurrentPage) || 1))
+            dispatch(PaginatorActions.setCurrentPage(JSON.parse(getCurrentPage)))
             const getValueInput = localStorage.getItem('valueInput')
             if (getValueInput) {
                 dispatch(
@@ -40,9 +38,14 @@ export const MainPage = (): React.ReactElement => {
             } else {
                 dispatch(RepositoriesThunks.getRepositories())
             }
+        } else {
+            dispatch(PaginatorActions.setCurrentPage(1))
+            dispatch(RepositoriesThunks.getRepositories())
         }
     }, [dispatch])
+
     const onSearchRepository = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+        console.log(1)
         setValue(e.currentTarget.value)
     }, [])
 

@@ -4,7 +4,7 @@ import { ActionsType } from './actions'
 const initialState = {
     pageSize: 10,
     portionSize: 3,
-    currentPage: 1,
+    currentPage: null as number | null,
 }
 
 type InitialStateType = typeof initialState
