@@ -22,6 +22,7 @@ export const MainPage = (): React.ReactElement => {
     useEffect(() => {
         if (currentPage) localStorage.setItem('currentPage', JSON.stringify(currentPage))
     }, [currentPage])
+    
     useEffect(() => {
         const getCurrentPage = localStorage.getItem('currentPage')
         if (getCurrentPage) {
