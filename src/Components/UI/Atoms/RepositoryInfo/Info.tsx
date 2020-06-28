@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { dateParser } from '../../../lib/dateParser'
 
 const Repository = styled.div`
     display: grid;
@@ -22,6 +23,7 @@ export const Info: React.FC<RepositoryInfoPropsType> = ({
     countStars,
     dateLastCommit,
 }) => {
+    const date = dateParser(dateLastCommit)
     return (
         <Repository>
             <RepositoryName>
@@ -31,7 +33,7 @@ export const Info: React.FC<RepositoryInfoPropsType> = ({
                 <Span>Stars:</Span> {countStars}
             </RepositoryStars>
             <RepositoryDateLastCommit>
-                <Span>Update:</Span> {dateLastCommit}
+                <Span>Update:</Span> {date}
             </RepositoryDateLastCommit>
         </Repository>
     )

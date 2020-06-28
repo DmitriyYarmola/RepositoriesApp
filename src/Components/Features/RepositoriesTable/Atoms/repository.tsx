@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { RepositoriesActions, RepositoriesThunks } from '../Model'
 import { Link } from '../../../UI/Atoms'
+import { dateParser } from '../../../lib/dateParser'
 
 const RepositoryItem = styled.div`
     display: grid;
@@ -61,6 +62,7 @@ export const Repository: React.FC<RepositoriesPropsType> = ({
         dispatch(RepositoriesThunks.getContributesRepository(fullName))
     }, [dispatch, repoID, fullName])
 
+    const date = dateParser(dateLastCommit)
     return (
         <RepositoryItem>
             <Name>
@@ -77,7 +79,7 @@ export const Repository: React.FC<RepositoriesPropsType> = ({
                 </NavLink>
             </Name>
             <CountStars>{countOfStars}</CountStars>
-            <DateLastCommit>{dateLastCommit}</DateLastCommit>
+            <DateLastCommit>{date}</DateLastCommit>
             <LinkOnGithub href={linkOnGithub} target="_blank">
                 {' '}
                 Link
