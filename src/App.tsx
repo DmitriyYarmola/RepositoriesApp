@@ -2,12 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
-import { MainPage } from './Components/Pages/Main'
 import { ErrorsSelectors } from './Components/Features/Errors/Model'
 import { Error } from './Components/Features/Errors'
-import { CardPage } from './Components/Pages/Card'
-import { NotFound } from './Components/Pages/Not Found'
 import './global.sass'
+import { routers } from './Components/Pages/router'
+
 const Wrapper = styled.div`
     width: 100%;
     max-width: 1200px;
@@ -21,9 +20,16 @@ export const App = (): React.ReactElement => {
         <Wrapper>
             {error && <Error />}
             <Switch>
-                <Route path="/"  exact component={() => <MainPage />} />
-                <Route path="/:repoID" component={() => <CardPage />} />
-                <Route path="*" component={() => <NotFound />} />
+                {routers.map(({ path, exact, Component }) => {
+                    return (
+                        <Route
+                            key={path}
+                            path={path}
+                            exact={exact}
+                            render={() => <Component />}
+                        />
+                    )
+                })}
             </Switch>
         </Wrapper>
     )
