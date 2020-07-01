@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import './style.sass'
+import { useSelector, useDispatch } from 'react-redux'
 import { Button } from '../../UI/Atoms'
+import { RepositoriesSelectors } from '../RepositoriesTable'
+import { PaginatorSelectors, PaginatorActions } from './Model'
+import { RepositoriesTypes } from '../RepositoriesTable/Model'
 
 const PageNumber = styled.span`
     color: black;
@@ -20,25 +24,31 @@ const NumberList = styled.div`
 `
 
 export interface PropsType {
-    totalItemsCount: number
-    pageSize: number
-    currentPage: number | null
-    onSetCurrentPage: (pageNumber: number) => void
-    portionSize: number
+    value: string
 }
 
-export const Paginator: React.FC<PropsType> = ({
-    totalItemsCount,
-    pageSize,
-    currentPage,
-    onSetCurrentPage,
-    portionSize,
-}) => {
-    const pagesCount = Math.ceil(totalItemsCount / pageSize)
+export const Paginator: React.FC<PropsType> = ({value}) => {
+    const dispatch = useDispatch()
+    const totalCount = useSelector(RepositoriesSelectors.totalCount)
+    const pageSize = useSelector(PaginatorSelectors.pageSize)
+    const currentPage = useSelector(PaginatorSelectors.currentPage)
+    const portionSize = useSelector(PaginatorSelectors.portionSize)
+
+    const pagesCount = Math.ceil(totalCount / pageSize)
     const pages: number[] = []
 
     for (let i = 1; i <= pagesCount; i++) {
         if (i <= 10) pages.push(i)
+    }
+
+    const onSetCurrentPage = (page: number): void => {
+        if (Math.ceil(totalCount / pageSize) !== 1) {
+            dispatch(PaginatorActions.setCurrentPage(page))
+            dispatch({
+                type: RepositoriesTypes.SEARCH_REPOSITORIES,
+                payload: { name: value, numberPage: page },
+            })
+        }
     }
 
     const portionCount = Math.ceil(pagesCount < 10 ? pagesCount : 10 / portionSize)

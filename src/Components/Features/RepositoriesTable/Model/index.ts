@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 import * as Types from './types'
-import * as Thunks from './thunks'
+import * as Thunks from './sagas'
 import * as Selectors from './selectors'
 
 export { Actions as RepositoriesActions } from './actions'

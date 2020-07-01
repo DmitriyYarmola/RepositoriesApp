@@ -42,6 +42,7 @@ export const CardPage = (): React.ReactElement => {
             dispatch(RepositoriesActions.setRepositories(JSON.parse(getRepositories)))
     }, [dispatch])
 
+    console.log(contributors)
     if (!repositoryInfo || !contributors) return <Preloader />
 
     const {

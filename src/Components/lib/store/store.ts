@@ -1,12 +1,19 @@
 /* eslint-disable @typescript-eslint/ban-ts-ignore */
 import { createStore, applyMiddleware } from 'redux'
-import Thanka from 'redux-thunk'
+import createSagaMiddleware from 'redux-saga'
 import { rootReducer } from './root-reducer'
+import { rootSaga } from './root-saga'
 
+const sagaMiddleware = createSagaMiddleware()
 //@ts-ignore
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(Thanka)))
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+export const store = createStore(
+    rootReducer,
+    composeEnhancers(applyMiddleware(sagaMiddleware))
+)
+
+sagaMiddleware.run(rootSaga)
 type PropertiesType<T> = T extends { [key: string]: infer U } ? U : never
 
 export type InferActionsType<

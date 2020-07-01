@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { RepositoriesActions, RepositoriesThunks } from '../Model'
+import { RepositoriesActions, RepositoriesTypes } from '../Model'
 import { Link } from '../../../UI/Atoms'
 import { dateParser } from '../../../lib/dateParser'
 
@@ -58,8 +58,13 @@ export const Repository: React.FC<RepositoriesPropsType> = ({
 }) => {
     const dispatch = useDispatch()
     const onGetInfoOfRepository = useCallback(() => {
+        console.log(fullName)
         dispatch(RepositoriesActions.setActiveRepository(repoID))
-        dispatch(RepositoriesThunks.getContributesRepository(fullName))
+        // dispatch(RepositoriesThunks.getContributesRepository(fullName))
+        dispatch({
+            type: RepositoriesTypes.CONTRIBUTES_OF_ACTIVE_REPOSITORY,
+            payload: { fullName },
+        })
     }, [dispatch, repoID, fullName])
 
     const date = dateParser(dateLastCommit)

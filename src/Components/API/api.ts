@@ -1,7 +1,6 @@
-import { RepositoryType } from './global-types';
-/* eslint-disable @typescript-eslint/camelcase */
 import axios from 'axios'
-
+import { RepositoryType } from './global-types'
+/* eslint-disable @typescript-eslint/camelcase */
 
 interface DataResponseType {
     items: RepositoryType[]
@@ -32,7 +31,6 @@ export const RepositoriesAPI = {
                     per_page: 10,
                 },
             })
-            console.log(response)
             return response
         } catch (error) {
             return error

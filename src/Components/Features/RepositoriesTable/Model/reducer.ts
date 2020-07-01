@@ -14,6 +14,7 @@ type InitialStateType = typeof initialState
 export const Reducer = (state = initialState, action: ActionsType): InitialStateType => {
     switch (action.type) {
         case types.SET_REPOSITORIES:
+            console.log(action)
             return {
                 ...state,
                 repositories: action.payload,
