@@ -6,7 +6,8 @@ const TextField = styled.input`
     background: white;
     margin: 0;
     padding: 10px;
-    width: 290px;
+    max-width: 275px;
+    width: 100%;
 `
 
 interface InputPropsType {

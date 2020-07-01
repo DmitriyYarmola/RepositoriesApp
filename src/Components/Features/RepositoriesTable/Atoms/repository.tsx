@@ -19,22 +19,27 @@ const RepositoryItem = styled.div`
     border-right: 1px solid black;
     border-left: 1px solid black;
     border: 1px solid black;
+    word-break: break-word;
 `
 
 const Name = styled.div`
     cursor: pointer;
     text-transform: none;
+    word-break: break-word;
 `
 const CountStars = styled.span`
     border-right: 1px solid black;
     border-left: 1px solid black;
+    word-break: break-word;
 `
 const DateLastCommit = styled.span`
     border-right: 1px solid black;
+    word-break: break-word;
 `
 const LinkOnGithub = styled(Link)`
     text-transform: none;
     text-decoration: none;
+    word-break: break-word;
     margin-left: 10px;
     color: inherit;
 `
@@ -58,9 +63,7 @@ export const Repository: React.FC<RepositoriesPropsType> = ({
 }) => {
     const dispatch = useDispatch()
     const onGetInfoOfRepository = useCallback(() => {
-        console.log(fullName)
         dispatch(RepositoriesActions.setActiveRepository(repoID))
-        // dispatch(RepositoriesThunks.getContributesRepository(fullName))
         dispatch({
             type: RepositoriesTypes.CONTRIBUTES_OF_ACTIVE_REPOSITORY,
             payload: { fullName },
