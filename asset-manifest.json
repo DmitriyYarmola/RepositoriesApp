@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/RepositoriesApp/static/css/main.e15175ca.chunk.css",
-    "main.js": "/RepositoriesApp/static/js/main.c4620dae.chunk.js",
-    "main.js.map": "/RepositoriesApp/static/js/main.c4620dae.chunk.js.map",
+    "main.js": "/RepositoriesApp/static/js/main.89d0f178.chunk.js",
+    "main.js.map": "/RepositoriesApp/static/js/main.89d0f178.chunk.js.map",
     "runtime-main.js": "/RepositoriesApp/static/js/runtime-main.091f2200.js",
     "runtime-main.js.map": "/RepositoriesApp/static/js/runtime-main.091f2200.js.map",
     "static/js/2.28ddf9aa.chunk.js": "/RepositoriesApp/static/js/2.28ddf9aa.chunk.js",
     "static/js/2.28ddf9aa.chunk.js.map": "/RepositoriesApp/static/js/2.28ddf9aa.chunk.js.map",
     "index.html": "/RepositoriesApp/index.html",
-    "precache-manifest.cd5948cb246a0b3afa1186b3fac0bbaa.js": "/RepositoriesApp/precache-manifest.cd5948cb246a0b3afa1186b3fac0bbaa.js",
+    "precache-manifest.f11b9e837f62863624efde5e98bbbbc4.js": "/RepositoriesApp/precache-manifest.f11b9e837f62863624efde5e98bbbbc4.js",
     "service-worker.js": "/RepositoriesApp/service-worker.js",
     "static/css/main.e15175ca.chunk.css.map": "/RepositoriesApp/static/css/main.e15175ca.chunk.css.map",
     "static/js/2.28ddf9aa.chunk.js.LICENSE.txt": "/RepositoriesApp/static/js/2.28ddf9aa.chunk.js.LICENSE.txt",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.091f2200.js",
     "static/js/2.28ddf9aa.chunk.js",
     "static/css/main.e15175ca.chunk.css",
-    "static/js/main.c4620dae.chunk.js"
+    "static/js/main.89d0f178.chunk.js"
   ]
 }
