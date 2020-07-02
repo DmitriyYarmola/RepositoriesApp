@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { put, takeEvery, all, call } from 'redux-saga/effects'
-import { RepositoriesAPI, ResponseCode } from '../../../API'
+import { API, ResponseCode } from '../../../API'
 
 import { ErrorsActions } from '../../Errors'
 import {
@@ -11,7 +11,7 @@ import {
 import { Actions } from './actions'
 
 export function* getRepositories() {
-    const response = yield call(RepositoriesAPI.getRepositories)
+    const response = yield call(API.RepositoriesAPI.getRepositories)
     if (response.status === ResponseCode.OK)
         yield put(Actions.setRepositories(response.data.items))
     else
@@ -29,7 +29,7 @@ interface SearchRepositoryPayloadType {
 }
 export function* searchRepository({ payload }: SearchRepositoryPayloadType) {
     const { name, numberPage } = payload
-    const response = yield call(RepositoriesAPI.searchRepositories, name, numberPage)
+    const response = yield call(API.RepositoriesAPI.searchRepositories, name, numberPage)
     if (response.status === ResponseCode.OK) {
         yield put(Actions.setRepositories(response.data.items))
         yield put(Actions.setTotalCountOfRepositories(response.data.total_count))
@@ -50,7 +50,7 @@ export function* getContributesRepository({
     payload,
 }: GetContributesRepositoryPayloadType) {
     const { fullName } = payload
-    const response = yield call(RepositoriesAPI.getContributorsOfRepository, fullName)
+    const response = yield call(API.ContributorsAPI.getContributors, fullName)
     if (response.status === ResponseCode.OK) {
         yield put(Actions.setContributesOfActiveRepository(response.data))
     } else
