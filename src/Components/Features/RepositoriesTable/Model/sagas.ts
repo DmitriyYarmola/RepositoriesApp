@@ -62,7 +62,7 @@ export function* getContributesRepository({
         )
 }
 
-export function* rootSagaRepo() {
+export function* RootSagaRepo() {
     yield all([
         takeEvery(GET_REPOSITORIES, getRepositories),
         takeEvery(SEARCH_REPOSITORIES, searchRepository),

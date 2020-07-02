@@ -76,7 +76,7 @@ export const Repository: React.FC<RepositoriesPropsType> = ({
             <Name>
                 <NavLink
                     onClick={onGetInfoOfRepository}
-                    to={'/' + repoID}
+                    to={'/user/' + repoID}
                     style={{
                         textTransform: 'none',
                         textDecoration: 'none',

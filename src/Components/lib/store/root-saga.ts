@@ -1,10 +1,10 @@
 import { all, AllEffect, ForkEffect } from 'redux-saga/effects'
-import { rootSagaRepo } from '../../Features/RepositoriesTable/Model/sagas'
+import { RootSagaRepo } from '../../Features/RepositoriesTable'
 
 export function* rootSaga(): Generator<
     AllEffect<Generator<AllEffect<ForkEffect<never>>, void, unknown>>,
     void,
     unknown
 > {
-    yield all([rootSagaRepo()])
+    yield all([RootSagaRepo()])
 }

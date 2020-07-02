@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
 import { ErrorsSelectors } from './Components/Features/Errors/Model'
 import { Error } from './Components/Features/Errors'
-import './global.sass'
 import { routers } from './Components/Pages/router'
+import { GlobalStyles } from './global-styles'
 
 const Wrapper = styled.div`
     width: 100%;
@@ -19,6 +19,7 @@ export const App = (): React.ReactElement => {
     return (
         <Wrapper>
             {error && <Error />}
+            <GlobalStyles />
             <Switch>
                 {routers.map(({ path, exact, Component }) => {
                     return (

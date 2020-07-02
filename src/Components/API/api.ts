@@ -1,36 +1,35 @@
-import axios from 'axios'
-import { RepositoryType } from './global-types'
 /* eslint-disable @typescript-eslint/camelcase */
+import { RepositoryType, UserType } from './global-types'
+import { instance } from './config'
 
-interface DataResponseType {
+interface RepositoriesResponseType {
     items: RepositoryType[]
     total_count: number
     incomplete_results: boolean
 }
 
+interface ContributorsResponseType {
+    items: UserType[]
+}
 export enum ResponseCode {
     OK = 200,
     NoFound = 404,
 }
-
-const instance = axios.create({
-    baseURL: 'https://api.github.com',
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-    },
-})
 export const RepositoriesAPI = {
     getRepositories: async () => {
         try {
-            const response = await instance.get<DataResponseType>('search/repositories', {
-                params: {
-                    q: 'stars',
-                    sort: 'stars',
-                    order: 'desc',
-                    page: 1,
-                    per_page: 10,
-                },
-            })
+            const response = await instance.get<RepositoriesResponseType>(
+                'search/repositories',
+                {
+                    params: {
+                        q: 'stars',
+                        sort: 'stars',
+                        order: 'desc',
+                        page: 1,
+                        per_page: 10,
+                    },
+                }
+            )
             return response
         } catch (error) {
             return error
@@ -38,7 +37,7 @@ export const RepositoriesAPI = {
     },
     searchRepositories: async (name: string, pageNumber: number) => {
         try {
-            const response = await instance.get<DataResponseType>(
+            const response = await instance.get<RepositoriesResponseType>(
                 `search/repositories?q=${name}+in:name`,
                 {
                     params: {
@@ -55,7 +54,7 @@ export const RepositoriesAPI = {
     },
     getContributorsOfRepository: async (fullNameOfRepository: string) => {
         try {
-            const response = await instance.get(
+            const response = await instance.get<ContributorsResponseType>(
                 `repos/${fullNameOfRepository}/contributors`,
                 {
                     params: {

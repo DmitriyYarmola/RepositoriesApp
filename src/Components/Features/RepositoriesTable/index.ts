@@ -3,6 +3,6 @@ export { Table } from './Organisms'
 export {
     RepositoriesReducer,
     RepositoriesActions,
-    RepositoriesThunks,
     RepositoriesSelectors,
+    RootSagaRepo,
 } from './Model'

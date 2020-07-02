@@ -4,6 +4,6 @@ import { MainPage } from './Main'
 
 export const routers = [
     { path: '/', exact: true, Component: MainPage },
-    { path: '/:repoID', exact: false, Component: CardPage },
-    { Component: NotFound },
+    { path: '/user/:repoID', exact: false, Component: CardPage },
+    { path: '*', exact: false, Component: NotFound },
 ]
