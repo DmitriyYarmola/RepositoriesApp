@@ -10,8 +10,8 @@ import { Preloader } from '../../UI/Molecules/Preloader'
 
 export const CardPage = (): React.ReactElement => {
     const dispatch = useDispatch()
-    const repositoryInfo = useSelector(RepositoriesSelectors.infoAboutActiveRepository)
     const contributors = useSelector(RepositoriesSelectors.contributors)
+    const repositoryInfo = useSelector(RepositoriesSelectors.infoAboutActiveRepository)
     const activeRepositoryId = useSelector(RepositoriesSelectors.activeRepositoryId)
 
     useEffect(() => {

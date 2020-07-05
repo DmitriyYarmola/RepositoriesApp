@@ -11,7 +11,7 @@ const ButtonS = styled.button`
 `
 
 interface ButtonPropsType {
-    children: React.ReactNode
+    children?: React.ReactNode
     onClick: () => void
 }
 

@@ -4,7 +4,8 @@
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext",
+      "es5", "es6", "es7", "es2017", "dom"
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -19,7 +20,6 @@
     "noEmit": true,
     "jsx": "react"
   },
-  "include": [
-    "src", "src/Components/Features/Repositories/Model/reducer.ts"
-  ]
+  "include": ["src/**/*", ".storybook/store.js"],
+  "exclude": ["node_modules", "build", "scripts"]
 }

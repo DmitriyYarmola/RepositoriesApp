@@ -29,7 +29,7 @@ export interface RepositoryType {
     private: boolean
     owner: UserType
     description: string
-    fork: false
+    fork: boolean
     forks_url: string
     keys_url: string
     collaborators_url: string
